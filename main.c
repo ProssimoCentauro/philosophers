@@ -1,13 +1,14 @@
-#include <stdio.h>
-#include <sys/time.h>
+#include "philophers.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	struct timeval	tv;
-	struct timezone tz;
-	gettimeofday(&tv, &tz);
+	t_table	table;
 
-	printf("%ld\n", tv.tv_sec);
-	printf("%ld\n", tv.tv_usec);
+	if (ac != 5 || ac != 6)
+		exit_error(USAGE_ERROR);
+	//parse args
+	//data init
+	//dinner_start
+	//clean
 	return (0);
 }
