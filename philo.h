@@ -10,6 +10,17 @@
 
 # define USAGE_ERROR "USAGE: ./philo 5 800 200 300 [5]"
 
+typedef enum    e_codes
+{
+    CREATE,
+    DETACH,
+    JOIN,
+    INIT,
+    DESTROY,
+    LOCK,
+    UNLOCK,
+}   t_mutex
+
 typedef struct s_table	t_table;
 
 typedef struct s_fork

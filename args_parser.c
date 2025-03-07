@@ -67,12 +67,17 @@ void	set_the_table(t_table	*table, char **args)
 		exit_error("USAGE_ERROR");
 
 	table->philo_nbr = ft_atol(args[1]);
-	table->time_to_die = ft_atol(args[2]);
-	table->time_to_eat = ft_atol(args[3]);
-	table->time_to_sleep = ft_atol(args[4]);
+	table->time_to_die = ft_atol(args[2]) * 10000;
+	table->time_to_eat = ft_atol(args[3]) * 10000;
+	table->time_to_sleep = ft_atol(args[4]) * 10000;
 	table->limit_meals = ft_atol(args[5]);
-	table->start_sim = 1;
-	table->end_sim = 0;
-	table->forks = (t_fork *)malloc(sizeof(t_fork) * ft_atol(args[1]));
-	table->philos = (t_philo *)malloc(sizeof(t_philo) * ft_atol(args[1]));
+	
+    if (table->time_to_die < 60000
+            || table->time_to_eat < 60000
+            || table->time_to_sleep < 60000)
+        exit_error(USAGE_ERROR);
+    //table->start_sim = 1;
+	//table->end_sim = 0;
+	//table->forks = (t_fork *)malloc(sizeof(t_fork) * ft_atol(args[1]));
+	//table->philos = (t_philo *)malloc(sizeof(t_philo) * ft_atol(args[1]));
 }
