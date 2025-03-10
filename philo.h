@@ -19,7 +19,7 @@ typedef enum    e_codes
     DESTROY,
     LOCK,
     UNLOCK,
-}   t_mutex
+}   t_codes;
 
 typedef struct s_table	t_table;
 
@@ -32,8 +32,8 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int					id;
+	int					has_eaten;
 	long				meals_counter;
-	int					has_eated;
 	long				last_meal_time;
 	t_fork				*left_fork;
 	t_fork				*right_fork;
@@ -53,4 +53,12 @@ typedef struct s_table
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
+
+void    set_the_table(t_table   *table, char **args);
+void    exit_error(char *str);
+void    init_table(t_table *table);
+void    mutex_manager(pthread_mutex_t *mtx, t_codes code);
+void    thread_manager(pthread_t *mtx, void *(*f)(void *),
+        void *arg, t_codes code);
+void    *safe_malloc(size_t bytes);
 #endif

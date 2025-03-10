@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void    *safe_malloc(syze_t bytes)
+void    *safe_malloc(size_t bytes)
 {
     void    *res;
 

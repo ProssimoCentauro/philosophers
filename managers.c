@@ -1,3 +1,5 @@
+#include "philo.h"
+
 void    mutex_manager(pthread_mutex_t *mtx, t_codes code)
 {
     int ret;
@@ -21,10 +23,10 @@ void    thread_manager(pthread_t *mtx, void *(*f)(void *),
 
     if (code == CREATE)
         ret = pthread_create(mtx, NULL, f, arg);
-    else if (code == DEATCH)
+    else if (code == DETACH)
         ret = pthread_detach(*mtx);
     else if (code == JOIN)
-        ret = pthread_join(*mtx);
+        ret = pthread_join(*mtx, NULL);
     if (ret != 0)
         exit_error("THREAD ERROR!");
 }

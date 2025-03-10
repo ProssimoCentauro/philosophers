@@ -1,3 +1,5 @@
+#include "philo.h"
+
 void	exit_error(char *str)
 {
 	size_t	i;
