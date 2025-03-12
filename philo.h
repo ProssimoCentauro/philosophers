@@ -61,4 +61,10 @@ void    mutex_manager(pthread_mutex_t *mtx, t_codes code);
 void    thread_manager(pthread_t *mtx, void *(*f)(void *),
         void *arg, t_codes code);
 void    *safe_malloc(size_t bytes);
+
+void    precise_usleep(size_t milliseconds);
+size_t  get_timestamp();
+void    start_simulation(t_table *table);
+
+
 #endif
