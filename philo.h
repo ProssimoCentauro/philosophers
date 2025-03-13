@@ -58,13 +58,13 @@ void    set_the_table(t_table   *table, char **args);
 void    exit_error(char *str);
 void    init_table(t_table *table);
 void    mutex_manager(pthread_mutex_t *mtx, t_codes code);
-void    thread_manager(pthread_t *mtx, void *(*f)(void *),
+void    thread_manager(pthread_t *thread, void *(*f)(void *),
         void *arg, t_codes code);
 void    *safe_malloc(size_t bytes);
 
 void    precise_usleep(size_t milliseconds);
-size_t  get_timestamp();
-void    start_simulation(t_table *table);
+size_t  get_secs();
+void    start_philos(t_table *table);
 
 
 #endif

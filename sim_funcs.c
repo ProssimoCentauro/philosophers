@@ -1,22 +1,26 @@
 #include "philo.h"
 
-void	precise_usleep(size_t milliseconds)
+static void    *test(void *arg)
 {
-	size_t	start;
-
-
+    int *id = arg;
+    printf("philo %d started\n", *id);
+    precise_usleep(1000000);
+    return (NULL);
 }
 
-size_t	get_timestamp()
+void    start_philos(t_table *table)
 {
-	struct	timeval	time;
+    long i;
 
-	gettimeofday(&time, NULL);
-//	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-	return (time.tv_usec);
+    i = -1;
+    while (++i < table->philo_nbr)
+    {
+        thread_manager(&table->philos[i].thread_id, test,
+                &table->philos->id, CREATE);
+    }
+    i = -1;
+    while (++i < table->philo_nbr)
+    {
+        thread_manager(&table->philos[i].thread_id, NULL, NULL, JOIN);
+    }
 }
-/*
-void    start_simulation(t_table *table)
-{
-    mutex_manager()
-}*/

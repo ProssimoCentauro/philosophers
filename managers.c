@@ -16,17 +16,17 @@ void    mutex_manager(pthread_mutex_t *mtx, t_codes code)
         exit_error("MUTEX ERROR!");
 }
 
-void    thread_manager(pthread_t *mtx, void *(*f)(void *),
+void    thread_manager(pthread_t *thread, void *(*f)(void *),
         void *arg, t_codes code)
 {
     int ret;
 
     if (code == CREATE)
-        ret = pthread_create(mtx, NULL, f, arg);
+        ret = pthread_create(thread, NULL, f, arg);
     else if (code == DETACH)
-        ret = pthread_detach(*mtx);
+        ret = pthread_detach(*thread);
     else if (code == JOIN)
-        ret = pthread_join(*mtx, NULL);
+        ret = pthread_join(*thread, NULL);
     if (ret != 0)
         exit_error("THREAD ERROR!");
 }

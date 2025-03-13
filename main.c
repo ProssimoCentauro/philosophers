@@ -11,18 +11,21 @@ static void check_usage(int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_table	table;
-/*
+
 	//args checker
 	check_usage(ac, av);
-    	//parse args
+    //parse args
 	set_the_table(&table, av);
 	//data init
 	init_table(&table);	
 	//dinner_start
-	start_sim(&table);
+	//start_sim(&table);
 	//clean
-*/
 
-	printf("%lu", get_timestamp());	
-	return (0);
+
+//	printf("%lu", get_timestamp());	
+
+    precise_usleep(100000);
+    //start_philos(&table);
+    return (0);
 }
