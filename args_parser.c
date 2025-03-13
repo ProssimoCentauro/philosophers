@@ -68,14 +68,13 @@ void	set_the_table(t_table	*table, char **args)
 		exit_error(USAGE_ERROR);
 
 	table->philo_nbr = ft_atol(args[1]);
-	table->time_to_die = ft_atol(args[2]) * 10000;
-	table->time_to_eat = ft_atol(args[3]) * 10000;
-	table->time_to_sleep = ft_atol(args[4]) * 10000;
+	table->time_to_die = ft_atol(args[2]);
+	table->time_to_eat = ft_atol(args[3]);
+	table->time_to_sleep = ft_atol(args[4]);
 	if (args[5])
 		table->limit_meals = ft_atol(args[5]);
-	
-    if (table->time_to_die < 60000
-            || table->time_to_eat < 60000
-            || table->time_to_sleep < 60000)
-        exit_error(USAGE_ERROR);
+	else
+		table->limit_meals = -1;
+
+	table->start_time = get_msecs();
 }
