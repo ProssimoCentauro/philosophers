@@ -1,7 +1,10 @@
 #include "philo.h"
 
-void	print_info(t_philo *philo)
+void	print_info(t_philo *philo, char *str)
 {
+    size_t  time;
+    time = get_msecs() - philo->start_time;
+    printf("%lu philo number %d %s\n", time, philo->id, str);
 }
 
 void	precise_usleep(size_t milliseconds)

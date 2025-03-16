@@ -32,7 +32,7 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int					id;
-	int					has_eaten;
+	int					is_eating;
 	long				meals_counter;
 	long				last_meal_time;
 	size_t	start_time;
@@ -68,5 +68,12 @@ void    precise_usleep(size_t milliseconds);
 size_t  get_msecs();
 void    start_philos(t_table *table);
 
+void    print_info(t_philo *philo, char *str);
 
+void    *dead_monitor(void   *arg);
+
+void    dream(t_philo *philo);
+void    think(t_philo *philo);
+
+void    *philo_routine(void  *philosopher);
 #endif

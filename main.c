@@ -19,10 +19,15 @@ int	main(int ac, char **av)
 	// data init
 	init_table(&table);
 	// dinner_start
-	// start_sim(&table);
 	// clean
 	//	printf("%lu", get_timestamp());
-	start_philos(&table);
+	/*int i =-1;
+    while (++i < table.philo_nbr)
+    {
+        printf("fork number %d: %p\n", i, &table.forks[i]);
+    }
+    printf("\n");*/
+    start_philos(&table);
 	//printf("%d\n", *table.philos[1].id);
 	return (0);
 }
