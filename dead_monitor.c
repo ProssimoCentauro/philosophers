@@ -25,24 +25,49 @@ static int check_all_ate(t_table *table)
         if (philos[i].meals_counter < table->limit_meals)
             return (0);
     }
-    print_meals(table);
+    //print_meals(table);
     return (1);
 }
 
 static int check_death(t_table *table)
 {
-    long    t_d = table->time_to_die;
-    t_philo *philos;
+    long    t_d;
     int i;
+    t_philo *philos;
 
+    t_d = table->time_to_die;
     i = -1;
     philos = table->philos;
     while (++i < table->philo_nbr)
     {
-        if (get_msecs() - table->philos[i].last_meal_time >= t_d)
+        if (get_msecs() - philos[i].last_meal_time >= t_d &&
+                philos[i].is_eating == 0)
+        {
+            print_info(&philos[i], "died");
             return (1);
+        }
     }
     return (0);
+}
+
+static  void    free_and_exit(t_table *table)
+{
+    int i;
+    t_philo    *philos;
+    t_fork     *forks;
+
+    i = -1;
+    philos = table->philos;
+    forks = table->forks;
+    /*while (++i < table->philo_nbr)
+    {
+        //thread_manager(&philos[i].thread_id, NULL, NULL, DETACH);
+        mutex_manager(&forks[i].fork, DESTROY);
+    }*/
+    free(table->forks);
+    free(table->philos);
+    printf("free and exit\n");
+    exit(0);
 }
 
 void    *dead_monitor(void *arg)
@@ -51,15 +76,9 @@ void    *dead_monitor(void *arg)
     printf("MONITOR STARTED!\n");
     while (42)
     {
-    /*    if (check_death(table) || check_all_ate(table))
-            exit(0);*/
-        /*print_meals(table);
-        precise_usleep(2000);*/
-        if (check_all_ate(table))
-        {
-            printf("All the philos have eaten!\n");
-            exit(0);
-        }
+        if (check_death(table) || check_all_ate(table))
+            free_and_exit(arg);
+            //exit(0);
     }
     return (NULL);
 }

@@ -24,9 +24,12 @@ int	main(int ac, char **av)
 	/*int i =-1;
     while (++i < table.philo_nbr)
     {
-        printf("fork number %d: %p\n", i, &table.forks[i]);
-    }
-    printf("\n");*/
+        printf("philo %d:\n", table.philos[i].id);
+        printf("l_fork %d:\n", table.philos[i].left_fork->id);
+        printf("r_fork %d:\n\n", table.philos[i].right_fork->id);
+    }*/
+    //printf("\n");
+    //exit(0);
     start_philos(&table);
 	//printf("%d\n", *table.philos[1].id);
 	return (0);

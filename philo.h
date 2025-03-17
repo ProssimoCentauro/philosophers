@@ -27,6 +27,7 @@ typedef struct s_fork
 {
 	pthread_mutex_t		fork;
 	int					status;
+    int id;
 }						t_fork;
 
 typedef struct s_philo
@@ -34,7 +35,7 @@ typedef struct s_philo
 	int					id;
 	int					is_eating;
 	long				meals_counter;
-	long				last_meal_time;
+	size_t				last_meal_time;
 	size_t	start_time;
 	t_fork				*left_fork;
 	t_fork				*right_fork;

@@ -41,7 +41,8 @@ static	void	philo_init(t_table *table)
 		philo->id = i + 1;
 		//printf("%d\n", philo->id);
 		//philo->has_eaten = 0;
-		philo->meals_counter = 0;
+		philo->last_meal_time = (size_t)get_msecs();
+        philo->meals_counter = 0;
 		philo->start_time = (size_t)get_msecs();
 		philo->table = table;
 		assign_forks(philo, table->forks, i);
@@ -59,6 +60,7 @@ void    init_table(t_table *table)
     while (++i < table->philo_nbr)
     {
 	    mutex_manager(&table->forks[i].fork, INIT);
+        table->forks[i].id = i + 1;
     }
     philo_init(table);
 }
