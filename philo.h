@@ -50,9 +50,9 @@ typedef struct s_table
 	long				time_to_eat;
 	long				time_to_sleep;
 	long				limit_meals;
-	long				start_sim;
 	long				end_sim;
 	size_t	start_time;
+	pthread_mutex_t	death_mtx;
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
@@ -77,4 +77,6 @@ void    dream(t_philo *philo);
 void    think(t_philo *philo);
 
 void    *philo_routine(void  *philosopher);
+
+void    free_and_exit(t_table *table);
 #endif
