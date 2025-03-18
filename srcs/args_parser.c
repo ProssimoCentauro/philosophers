@@ -8,8 +8,7 @@
  * [number_of_times_each_philosopher_must_eat]
  * */
 
-// no negatives!!!
-static int	check_args(char **args)
+int	check_args(char **args)
 {
 	size_t	i;
 	size_t	j;
@@ -60,8 +59,6 @@ static long	ft_atol(char *str)
 
 void	set_the_table(t_table *table, char **args)
 {
-	if (!check_args(args))
-		exit_error(USAGE_ERROR);
 	table->philo_nbr = ft_atol(args[1]);
 	table->time_to_die = ft_atol(args[2]);
 	table->time_to_eat = ft_atol(args[3]);
