@@ -2,16 +2,17 @@
 
 void	print_info(t_philo *philo, char *str)
 {
-    size_t  time;
-    time = get_msecs() - philo->start_time;
-    mutex_manager(&philo->table->death_mtx, LOCK);
-    if (philo->table->end_sim == 1)
-    {
-    	mutex_manager(&philo->table->death_mtx, UNLOCK);
-	    return ;
-    }
-    mutex_manager(&philo->table->death_mtx, UNLOCK);
-    printf("%lu philo %d %s\n", time, philo->id, str);
+	size_t	time;
+
+	time = get_msecs() - philo->start_time;
+	mutex_manager(&philo->table->death_mtx, LOCK);
+	if (philo->table->end_sim == 1)
+	{
+		mutex_manager(&philo->table->death_mtx, UNLOCK);
+		return ;
+	}
+	mutex_manager(&philo->table->death_mtx, UNLOCK);
+	printf("%lu philo %d %s\n", time, philo->id, str);
 }
 
 void	precise_usleep(size_t milliseconds)

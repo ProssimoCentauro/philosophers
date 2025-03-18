@@ -6,5 +6,5 @@ philo_actions.c
 main.c
 managers.c
 philo.h
-
+safe_funcs.c
 
