@@ -58,7 +58,7 @@ typedef struct s_table
 }						t_table;
 
 void					exit_error(char *str, void (*f)(void));
-void    print_usage_error(void);
+void					print_usage_error(void);
 
 void					set_the_table(t_table *table, char **args);
 void					init_table(t_table *table);
@@ -82,5 +82,5 @@ void					*philo_routine(void *philosopher);
 
 void					free_and_exit(t_table *table);
 
-int check_args(char **args);
+int						check_args(char **args);
 #endif

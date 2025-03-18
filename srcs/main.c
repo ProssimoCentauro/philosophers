@@ -23,23 +23,22 @@ static int	check_len(char *str)
 	return (1);
 }
 
-
 static void	check_usage(int ac, char **av)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
+	i = 0;
 	if (!av[5] && ac != 5)
 		exit_error(NULL, print_usage_error);
 	else if (av[5] && ac != 6)
 		exit_error(NULL, print_usage_error);
-    if (!check_args(av))
-        exit_error(NULL, print_usage_error);
-    while (av[++i])
-    {
-        if (!check_len(av[i]))
-            exit_error(NULL, print_usage_error);
-    }
+	if (!check_args(av))
+		exit_error(NULL, print_usage_error);
+	while (av[++i])
+	{
+		if (!check_len(av[i]))
+			exit_error(NULL, print_usage_error);
+	}
 }
 
 int	main(int ac, char **av)

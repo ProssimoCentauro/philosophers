@@ -32,9 +32,9 @@ void	exit_error(char *str, void (*f)(void))
 			i++;
 		write(2, str, i);
 	}
-    if (f)
-    {
-        f();
-    }
-    exit(EXIT_FAILURE);
+	if (f)
+	{
+		f();
+	}
+	exit(EXIT_FAILURE);
 }
