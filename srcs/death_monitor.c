@@ -55,7 +55,6 @@ void	free_and_exit(t_table *table)
 	}
 	free(table->forks);
 	free(table->philos);
-	printf("free and exit\n");
 	exit(0);
 }
 
@@ -64,7 +63,6 @@ void	*dead_monitor(void *arg)
 	t_table	*table;
 
 	table = (t_table *)arg;
-	printf("MONITOR STARTED!\n");
 	while (42)
 	{
 		if (check_death(table) || check_all_ate(table))
