@@ -1,11 +1,11 @@
 #include "philo.h"
 
-void    *safe_malloc(size_t bytes)
+void	*safe_malloc(size_t bytes)
 {
-    void    *res;
+	void	*res;
 
-    res = malloc(bytes);
-    if (!res)
-        exit_error("MALLOC ERROR!");
-    return (res);
+	res = malloc(bytes);
+	if (!res)
+		exit_error("MALLOC ERROR!");
+	return (res);
 }

@@ -5,4 +5,6 @@ init_functions.c
 philo_actions.c
 main.c
 managers.c
+philo.h
+
 
