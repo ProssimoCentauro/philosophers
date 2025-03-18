@@ -1,0 +1,5 @@
+args_parser.c
+death_monitor.c
+errors_utils.c
+init_functions.c
+philo_actions.c
