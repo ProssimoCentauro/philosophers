@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:57:55 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/03/19 15:57:57 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/03/19 17:52:06 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	free_and_exit(t_table *table)
 	}
 	free(table->forks);
 	free(table->philos);
-	exit(0);
 }
 
 void	*dead_monitor(void *arg)

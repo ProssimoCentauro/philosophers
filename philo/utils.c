@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:59:13 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/03/19 15:59:14 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/03/19 17:53:44 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	print_info(t_philo *philo, char *str)
 		mutex_manager(&philo->table->death_mtx, UNLOCK);
 		return ;
 	}
+	printf("%lu %d %s\n", time, philo->id, str);
 	mutex_manager(&philo->table->death_mtx, UNLOCK);
-	printf("%lu philo %d %s\n", time, philo->id, str);
 }
 
 void	precise_usleep(size_t milliseconds)
