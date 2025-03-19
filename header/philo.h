@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 15:57:15 by rtodaro           #+#    #+#             */
+/*   Updated: 2025/03/19 15:57:24 by rtodaro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -26,8 +38,6 @@ typedef struct s_table	t_table;
 typedef struct s_fork
 {
 	pthread_mutex_t		fork;
-	int					status;
-	int					id;
 }						t_fork;
 
 typedef struct s_philo

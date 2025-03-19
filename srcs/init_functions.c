@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 15:58:05 by rtodaro           #+#    #+#             */
+/*   Updated: 2025/03/19 16:00:21 by rtodaro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 static void	assign_forks(t_philo *philo, t_fork *forks, int i)
@@ -41,9 +53,6 @@ void	init_table(t_table *table)
 	table->end_sim = 0;
 	mutex_manager(&table->death_mtx, INIT);
 	while (++i < table->philo_nbr)
-	{
 		mutex_manager(&table->forks[i].fork, INIT);
-		table->forks[i].id = i + 1;
-	}
 	philo_init(table);
 }
