@@ -35,31 +35,34 @@ static int	check_len(char *str)
 	return (1);
 }
 
-static void	check_usage(int ac, char **av)
+static int	check_usage(int ac, char **av)
 {
 	size_t	i;
 
 	i = 0;
 	if (!av[5] && ac != 5)
-		exit_error(NULL, print_usage_error);
+		return (exit_error(NULL, print_usage_error, 1, 0));
 	else if (av[5] && ac != 6)
-		exit_error(NULL, print_usage_error);
+		return (exit_error(NULL, print_usage_error, 1, 0));
 	if (!check_args(av))
-		exit_error(NULL, print_usage_error);
+		return (exit_error(NULL, print_usage_error, 1, 0));
 	while (av[++i])
 	{
 		if (!check_len(av[i]))
-			exit_error(NULL, print_usage_error);
+			return (exit_error(NULL, print_usage_error, 1, 0));
 	}
+    return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_table	table;
 
-	check_usage(ac, av);
+	if (check_usage(ac, av))
+        return (EXIT_FAILURE);
 	set_the_table(&table, av);
-	init_table(&table);
+	if (init_table(&table))
+        return (EXIT_FAILURE);
 	start_philos(&table);
-	return (0);
+	return (EXIT_SUCCESS);
 }

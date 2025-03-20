@@ -18,6 +18,9 @@ void	*safe_malloc(size_t bytes)
 
 	res = malloc(bytes);
 	if (!res)
-		exit_error("MALLOC ERROR!", NULL);
+    {
+        printf("\nMALLOC ERROR!\n");
+        return (NULL);
+    }
 	return (res);
 }

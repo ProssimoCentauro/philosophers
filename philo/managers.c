@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-void	mutex_manager(pthread_mutex_t *mtx, t_codes code)
+int	mutex_manager(pthread_mutex_t *mtx, t_codes code)
 {
 	int	ret;
 
@@ -26,10 +26,11 @@ void	mutex_manager(pthread_mutex_t *mtx, t_codes code)
 	else if (code == UNLOCK)
 		ret = pthread_mutex_unlock(mtx);
 	if (ret != 0)
-		exit_error("MUTEX ERROR!", NULL);
+		return (exit_error("\nMUTEX ERROR!\n", NULL, ret, 1));
+    return (ret);
 }
 
-void	thread_manager(pthread_t *thread, void *(*f)(void *), void *arg,
+int	thread_manager(pthread_t *thread, void *(*f)(void *), void *arg,
 		t_codes code)
 {
 	int	ret;
@@ -42,5 +43,6 @@ void	thread_manager(pthread_t *thread, void *(*f)(void *), void *arg,
 	else if (code == JOIN)
 		ret = pthread_join(*thread, NULL);
 	if (ret != 0)
-		exit_error("THREAD ERROR!", NULL);
+		return (exit_error("\nTHREAD ERROR!\n", NULL, ret, 1));
+    return (ret);
 }

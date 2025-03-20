@@ -60,20 +60,22 @@ typedef struct s_table
 	long				time_to_eat;
 	long				time_to_sleep;
 	long				limit_meals;
-	long				end_sim;
+	int				end_sim;
+    int force_exit;
 	size_t				start_time;
 	pthread_mutex_t		death_mtx;
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
 
-void					exit_error(char *str, void (*f)(void));
+int					exit_error(char *str, void (*f)(void),
+        int code, int print);
 void					print_usage_error(void);
 
 void					set_the_table(t_table *table, char **args);
-void					init_table(t_table *table);
-void					mutex_manager(pthread_mutex_t *mtx, t_codes code);
-void					thread_manager(pthread_t *thread, void *(*f)(void *),
+int					init_table(t_table *table);
+int					mutex_manager(pthread_mutex_t *mtx, t_codes code);
+int					thread_manager(pthread_t *thread, void *(*f)(void *),
 							void *arg, t_codes code);
 void					*safe_malloc(size_t bytes);
 
@@ -83,7 +85,7 @@ void					start_philos(t_table *table);
 
 void					print_info(t_philo *philo, char *str);
 
-void					*dead_monitor(void *arg);
+void					*death_monitor(void *arg);
 
 void					dream(t_philo *philo);
 void					think(t_philo *philo);

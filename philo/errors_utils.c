@@ -33,7 +33,7 @@ void	print_usage_error(void)
 	printf("|----------------------------|\n");
 }
 
-void	exit_error(char *str, void (*f)(void))
+int	exit_error(char *str, void (*f)(void), int code, int print)
 {
 	size_t	i;
 
@@ -48,5 +48,7 @@ void	exit_error(char *str, void (*f)(void))
 	{
 		f();
 	}
-	exit(EXIT_FAILURE);
+    if (print == 1)
+        printf("\nERROR CODE: %d\n", code);
+    return (code);
 }

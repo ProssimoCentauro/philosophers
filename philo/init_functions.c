@@ -43,16 +43,25 @@ static void	philo_init(t_table *table)
 	}
 }
 
-void	init_table(t_table *table)
+int	init_table(t_table *table)
 {
 	long	i;
 
 	i = -1;
 	table->forks = safe_malloc(sizeof(t_fork) * table->philo_nbr);
-	table->philos = safe_malloc(sizeof(t_philo) * table->philo_nbr);
-	table->end_sim = 0;
-	mutex_manager(&table->death_mtx, INIT);
+    if (!table->forks)
+        return (1);
+    table->philos = safe_malloc(sizeof(t_philo) * table->philo_nbr);
+    if (!table->forks)
+    {
+        free(table->forks);
+        return (1);
+    }
+    table->end_sim = 0;
+	table->force_exit = 0;
+	if (mutex_manager(&table->death_mtx, INIT))
 	while (++i < table->philo_nbr)
 		mutex_manager(&table->forks[i].fork, INIT);
 	philo_init(table);
+    return (0);
 }
