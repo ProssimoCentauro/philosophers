@@ -27,7 +27,7 @@ int	mutex_manager(pthread_mutex_t *mtx, t_codes code)
 		ret = pthread_mutex_unlock(mtx);
 	if (ret != 0)
 		return (exit_error("\nMUTEX ERROR!\n", NULL, ret, 1));
-    return (ret);
+	return (ret);
 }
 
 int	thread_manager(pthread_t *thread, void *(*f)(void *), void *arg,
@@ -44,5 +44,5 @@ int	thread_manager(pthread_t *thread, void *(*f)(void *), void *arg,
 		ret = pthread_join(*thread, NULL);
 	if (ret != 0)
 		return (exit_error("\nTHREAD ERROR!\n", NULL, ret, 1));
-    return (ret);
+	return (ret);
 }

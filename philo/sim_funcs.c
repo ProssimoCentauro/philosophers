@@ -12,46 +12,44 @@
 
 #include "philo.h"
 
-/*
-static  int start_threads(t_table *table)
+static int	cycle_threads(t_table *table, t_codes code)
 {
+	long	i;
 
-}*/
+	i = -1;
+	while (++i < table->philo_nbr)
+	{
+		if (thread_manager(&table->philos[i].thread_id, philo_routine,
+				&table->philos[i], code))
+		{
+			table->force_exit = 1;
+			return (1);
+		}
+	}
+	return (0);
+}
 
 void	start_philos(t_table *table)
 {
-	long		i;
 	pthread_t	monitor;
 
-	i = -1;
 	if (thread_manager(&monitor, death_monitor, table, CREATE))
-    {
-        table->force_exit = 1;
-        return ; 
-    }
-    while (++i < table->philo_nbr)
 	{
-		if (thread_manager(&table->philos[i].thread_id,
-                    philo_routine, &table->philos[i], CREATE))
-        {
-            table->force_exit = 1;
-            return ;
-        }
-    }
-	i = -1;
+		table->force_exit = 1;
+		return ;
+	}
+	if (cycle_threads(table, CREATE))
+	{
+		return ;
+	}
 	if (thread_manager(&monitor, NULL, NULL, JOIN))
-    {
-        table->force_exit = 1;
-        return ;
-    }
-	while (++i < table->philo_nbr)
 	{
-		if (thread_manager(&table->philos[i].thread_id,
-                    NULL, NULL, JOIN))
-        {
-            table->force_exit = 1;
-            return ;
-        }
+		table->force_exit = 1;
+		return ;
+	}
+	if (cycle_threads(table, JOIN))
+	{
+		return ;
 	}
 	free_and_exit(table);
 }

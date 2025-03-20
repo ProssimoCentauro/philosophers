@@ -51,7 +51,7 @@ static int	check_usage(int ac, char **av)
 		if (!check_len(av[i]))
 			return (exit_error(NULL, print_usage_error, 1, 0));
 	}
-    return (0);
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -59,10 +59,10 @@ int	main(int ac, char **av)
 	t_table	table;
 
 	if (check_usage(ac, av))
-        return (EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	set_the_table(&table, av);
 	if (init_table(&table))
-        return (EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	start_philos(&table);
 	return (EXIT_SUCCESS);
 }

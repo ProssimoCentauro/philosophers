@@ -70,5 +70,5 @@ void	*philo_routine(void *philosopher)
 		think(philo);
 	}
 	mutex_manager(&philo->table->death_mtx, UNLOCK);
-    return (NULL);
+	return (NULL);
 }

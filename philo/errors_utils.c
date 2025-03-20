@@ -48,7 +48,7 @@ int	exit_error(char *str, void (*f)(void), int code, int print)
 	{
 		f();
 	}
-    if (print == 1)
-        printf("\nERROR CODE: %d\n", code);
-    return (code);
+	if (print == 1)
+		printf("\nERROR CODE: %d\n", code);
+	return (code);
 }

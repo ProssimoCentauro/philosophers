@@ -76,11 +76,11 @@ void	*death_monitor(void *arg)
 	table = (t_table *)arg;
 	while (42)
 	{
-        if (table->force_exit == 1)
-        {
-            table->end_sim = 1;
-            return (NULL) ;
-        }
+		if (table->force_exit == 1)
+		{
+			table->end_sim = 1;
+			return (NULL);
+		}
 		if (check_death(table) || check_all_ate(table))
 		{
 			mutex_manager(&table->death_mtx, LOCK);
@@ -89,5 +89,5 @@ void	*death_monitor(void *arg)
 			break ;
 		}
 	}
-    return (NULL);
+	return (NULL);
 }
